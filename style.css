@@ -1,0 +1,181 @@
+@import url('https://fonts.googleapis.com/css2?family=Caveat&family=Nunito&family=Single+Day&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Courgette&display=swap');
+*{
+    margin: 0;
+    padding: 0;
+}
+body{
+    padding-top: 20px;
+}
+
+.Head{
+    text-align: center;
+    margin-bottom: 30px;
+    /* font-family: 'Courier New', Courier, monospace; */
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 18px;
+
+}
+.Head h1 span{
+    color: rgb(173, 104, 45);
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+
+}
+#container{
+    width: 60%;
+    margin: 50px auto;
+    background-color: aliceblue;
+    border-radius: 20px;
+    box-shadow: rgb(92, 92, 92) 0px 8px 24px;
+    padding: 40px 20px;
+    
+
+}
+
+/* title */
+
+.title{
+    text-align: center;
+    
+}
+
+.titleInp{
+    padding: 10px;
+    border: .5px solid rgb(220, 194, 171);
+    height: 20px;
+    width: 350px;
+    border-radius: 25px;
+    font-size: 16px;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+.titlebtn{
+    text-align: center;
+    padding: 10px;
+    border: .5px solid rgb(220, 194, 171);
+    background-color: rgb(211, 151, 98);
+    color: rgb(252, 252, 252);
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+    font-size: 20px;
+    font-weight: bolder;
+    margin-left: 5px;
+}
+
+.titlebtn:hover{
+    cursor: pointer;
+    background-color:rgb(252, 252, 252) ;
+    color: rgb(211, 151, 98);
+}
+
+
+/*Tasks Containar*/
+.tasks{
+    margin: auto;
+    width: 45%;
+    padding: 20px;
+  
+}
+
+.tasks li{
+    color: rgb(173, 104, 45);
+    padding: 7px;
+    font-size: 22px;
+   
+    font-family: 'Courgette', cursive;
+
+    list-style-type: none;
+
+  
+}
+
+
+
+.tasks li.done{
+    padding: 7px;
+    font-size: 18px;
+
+    color: gray;
+    text-decoration: line-through;
+    font-family: 'Courgette', cursive;
+    
+
+  
+}
+
+.tasks li:hover{
+    cursor:pointer;
+}
+
+.tasks li::before{
+    font-family: FontAwesome;
+    content: "\f135";
+    font-size: 15px;
+    padding-right: 10px;
+    color: rgb(173, 104, 45);
+}
+
+.tasks li.done::before{
+    font-family: FontAwesome;
+    content: "\f058";
+    font-size: 14px;
+    padding-right: 4px;
+    text-decoration: none !important;
+    color:gray;
+  
+}
+
+
+
+/*an task  */
+.tsk{
+    margin: 10px;
+    padding: 10px;
+    border: .5px solid rgb(220, 194, 171);
+    height: 20px;
+    border-radius: 25px;
+    font-size: 16px;
+}
+/* 
+button{
+    margin: 5px;
+    height: 30px;
+    width: 100px;
+}*/
+.btns{
+    float: right;
+    
+
+} 
+
+.TaskName{
+    display: inline-block;
+
+}
+input[type=button]{
+    padding: 5px;
+    margin: 5px;
+
+}
+
+@media screen and (max-width: 600px) {
+    body {
+        padding-top: 10px; 
+    }
+
+    #container {
+        width: 75%; 
+    }
+
+    .tasks {
+        width: 80%; 
+    }
+
+    .titleInp {
+        width: 70%; 
+    }
+
+    /* Add more adjustments for smaller screens as needed */
+}
+
