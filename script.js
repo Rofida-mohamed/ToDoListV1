@@ -11,6 +11,8 @@ let tasksdiv = document.querySelector('.tasks');
 
 let lastTapTime = 0;
 
+let doubleTapFlag = false;  
+
 
 
 //add to list
@@ -56,7 +58,7 @@ function deleteTaskWith(taskId) {
 
 
 // Initialize Hammer.js for the tasksdiv
-const hammer = new Hammer(tasksdiv);
+
 
 function addTaskDiv(task) {
     let tskdiv = document.createElement("li");
@@ -71,18 +73,36 @@ function addTaskDiv(task) {
     tasksdiv.appendChild(tskdiv);
 
     tskdiv.addEventListener("click", function () {
-        if (task.status) {
-            task.status = false;
-            tskdiv.className = null;
-        } else {
-            task.status = true;
-            tskdiv.className = "done";
+        if (!doubleTapFlag) {  // Check if it's not a double tap
+            if (task.status) {
+                task.status = false;
+                tskdiv.className = null;
+            } else {
+                task.status = true;
+                tskdiv.className = "done";
+            }
         }
+        doubleTapFlag = false;  // Reset the flag after processing single tap
     });
 
     tskdiv.addEventListener("dblclick", function () {
         deleteTaskWith(task.id);
         tskdiv.remove();
+    });
+    let hammer = new Hammer(tskdiv);
+    hammer.on('tap', function (e) {
+        let currentTime = new Date().getTime();
+        const timeBetweenTaps = 400; // 400ms
+    
+        if (currentTime - lastTapTime < timeBetweenTaps) {
+            // Double tap detected
+            let taskId = e.target.dataset.id;
+            deleteTaskWith(taskId);
+            e.target.remove();
+            doubleTapFlag = true;  // Set the flag for double tap
+        }
+    
+        lastTapTime = currentTime;
     });
 }
 
@@ -93,17 +113,5 @@ function addtasktopage(todo) {
     });
 }
 
-hammer.on('tap', function (e) {
-    let currentTime = new Date().getTime();
-    const timeBetweenTaps = 400; // 400ms
 
-    if (currentTime - lastTapTime < timeBetweenTaps) {
-        // Double tap detected
-        let taskId = e.target.dataset.id;
-        deleteTaskWith(taskId);
-        e.target.remove();
-    }
-
-    lastTapTime = currentTime;
-});
 
